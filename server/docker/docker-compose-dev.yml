@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  hoctumoi_mongodb:
+    container_name: hoctumoi_mongodb
+    build: ./mongodb
+    env_file:
+      - ./mongodb/dev.env
+    ports:
+      - '27017:27017'
+    restart: always
+    networks:
+      hoctumoi_network:
+
+  hoctumoi_mongodb_express:
+    container_name: hoctumoi_mongodb_express
+    image: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: 'dbadmin'
+      ME_CONFIG_MONGODB_ADMINPASSWORD: '123qwe'
+      ME_CONFIG_MONGODB_SERVER: 'hoctumoi_mongodb'
+    ports:
+      - '8989:8081'
+    restart: always
+    depends_on:
+      - hoctumoi_mongodb
+    networks:
+      hoctumoi_network:
+
+networks:
+  hoctumoi_network:
+    name: hoctumoi_network
