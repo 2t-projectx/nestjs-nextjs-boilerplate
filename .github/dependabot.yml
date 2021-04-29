@@ -1,0 +1,50 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/server"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - server
+  - dependencies
+  - dependabot
+- package-ecosystem: npm
+  directory: "/client"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - client
+  - dependencies
+  - dependabot
+- package-ecosystem: docker
+  directory: "/server"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - server
+  - docker
+  - dependabot
+- package-ecosystem: docker
+  directory: "/client"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  target-branch: master
+  reviewers:
+  - tomanagle
+  labels:
+  - client
+  - docker
+  - dependabot
